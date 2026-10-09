@@ -1,75 +1,146 @@
 /**
  * Cafeworld Publication - Complete Frontend Interactivity Engine
- * Restores: Mobile Hamburger Menu, Hero & Book Swiper Sliders, Lightbox Modal
+ * Features:
+ * 1. Off-Canvas Side Drawer Menu (Opens Right-to-Left with White Background)
+ * 2. Swiper Sliders & Carousels (Hero, Books, Testimonials)
+ * 3. Lightbox Modal for Images
  */
 
 (function () {
     function initInteractivity() {
         // ==========================================
-        // 1. MOBILE HAMBURGER MENU TOGGLE
+        // 1. OFF-CANVAS SIDE PANEL MENU (RIGHT TO LEFT)
         // ==========================================
+        let sideDrawer = document.getElementById('cw-side-drawer');
+        if (!sideDrawer) {
+            sideDrawer = document.createElement('div');
+            sideDrawer.id = 'cw-side-drawer';
+            sideDrawer.innerHTML = `
+                <!-- Dark Overlay Backdrop -->
+                <div id="cw-drawer-backdrop" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.55);z-index:999998;opacity:0;pointer-events:none;transition:opacity 0.35s ease;backdrop-filter:blur(2px);"></div>
+                
+                <!-- White Side Drawer Panel (Right to Left) -->
+                <div id="cw-drawer-panel" style="position:fixed;top:0;right:0;width:min(85vw, 330px);height:100%;background:#ffffff;z-index:999999;box-shadow:-5px 0 30px rgba(0,0,0,0.22);transform:translateX(100%);transition:transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);display:flex;flex-direction:column;font-family:'Poppins',-apple-system,sans-serif;overflow-y:auto;">
+                    
+                    <!-- Top Header: Logo & Close Button -->
+                    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #f1f5f9;background:#fafafa;">
+                        <a href="index.html" style="display:flex;align-items:center;">
+                            <img src="images/WhatsApp-Image-2026-09-04-at-9.06.36-PM-768x384.webp" alt="Cafeworld Publication" style="max-height:45px;width:auto;object-fit:contain;" />
+                        </a>
+                        <button id="cw-drawer-close" aria-label="Close Menu" style="background:#f1f5f9;border:none;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#334155;font-size:24px;line-height:1;transition:all 0.2s ease;">
+                            &times;
+                        </button>
+                    </div>
+
+                    <!-- Navigation Links -->
+                    <nav style="flex:1;padding:24px 18px;">
+                        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;">
+                            <li>
+                                <a href="index.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                    <span style="margin-right:12px;font-size:18px;">🏠</span> Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="our-published-books.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                    <span style="margin-right:12px;font-size:18px;">📚</span> Our Published books
+                                </a>
+                            </li>
+                            <li>
+                                <a href="gallery.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                    <span style="margin-right:12px;font-size:18px;">🖼️</span> Gallery
+                                </a>
+                            </li>
+                            <li>
+                                <a href="about-us.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                    <span style="margin-right:12px;font-size:18px;">ℹ️</span> About Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="contact.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                    <span style="margin-right:12px;font-size:18px;">📞</span> Contact Us
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <!-- Bottom Quick Action Buttons -->
+                    <div style="padding:20px 24px;border-top:1px solid #f1f5f9;background:#fafafa;display:flex;flex-direction:column;gap:10px;">
+                        <a href="tel:+919914022845" style="display:flex;align-items:center;justify-content:center;padding:12px 18px;background:#2563eb;color:#ffffff;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 3px 12px rgba(37,99,235,0.25);">
+                            📞 Call: +91 99140 22845
+                        </a>
+                        <a href="https://wa.me/919914022845?text=Hello%20Cafeworld%20Publication" target="_blank" style="display:flex;align-items:center;justify-content:center;padding:12px 18px;background:#16a34a;color:#ffffff;border-radius:8px;text-decoration:none;font-weight:600;font-size:15px;box-shadow:0 3px 12px rgba(22,163,74,0.25);">
+                            💬 Chat on WhatsApp
+                        </a>
+                    </div>
+
+                </div>
+                <style>
+                    .cw-drawer-link:hover, .cw-drawer-link:active {
+                        background: #f1f5f9 !important;
+                        color: #16a34a !important;
+                    }
+                    #cw-drawer-close:hover {
+                        background: #e2e8f0 !important;
+                        color: #0f172a !important;
+                        transform: scale(1.05);
+                    }
+                </style>
+            `;
+            document.body.appendChild(sideDrawer);
+
+            const backdrop = sideDrawer.querySelector('#cw-drawer-backdrop');
+            const panel = sideDrawer.querySelector('#cw-drawer-panel');
+            const closeBtn = sideDrawer.querySelector('#cw-drawer-close');
+
+            function openDrawer() {
+                backdrop.style.opacity = '1';
+                backdrop.style.pointerEvents = 'auto';
+                panel.style.transform = 'translateX(0)';
+                document.body.style.overflow = 'hidden'; // prevent background scrolling
+            }
+
+            function closeDrawer() {
+                backdrop.style.opacity = '0';
+                backdrop.style.pointerEvents = 'none';
+                panel.style.transform = 'translateX(100%)';
+                document.body.style.overflow = '';
+            }
+
+            // Expose globally
+            window.openCwSideDrawer = openDrawer;
+            window.closeCwSideDrawer = closeDrawer;
+
+            closeBtn.addEventListener('click', closeDrawer);
+            backdrop.addEventListener('click', closeDrawer);
+
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeDrawer();
+            });
+
+            // Close when clicking any navigation link
+            sideDrawer.querySelectorAll('.cw-drawer-link').forEach(link => {
+                link.addEventListener('click', closeDrawer);
+            });
+        }
+
+        // Connect hamburger button (.elementor-menu-toggle) to open side drawer
         const menuToggles = document.querySelectorAll('.elementor-menu-toggle');
         menuToggles.forEach(toggle => {
-            // Avoid duplicate listeners
             if (toggle.dataset.cwInitialized) return;
             toggle.dataset.cwInitialized = 'true';
 
             toggle.addEventListener('click', function (e) {
                 e.preventDefault();
                 e.stopPropagation();
-                
-                const isOpen = toggle.classList.contains('elementor-active');
-                if (isOpen) {
-                    toggle.classList.remove('elementor-active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                } else {
-                    toggle.classList.add('elementor-active');
-                    toggle.setAttribute('aria-expanded', 'true');
-                }
-
-                // Find dropdown container (usually sibling or inside widget)
-                const widget = toggle.closest('.elementor-widget-nav-menu');
-                if (widget) {
-                    const dropdown = widget.querySelector('.elementor-nav-menu--dropdown');
-                    if (dropdown) {
-                        if (!isOpen) {
-                            dropdown.classList.add('elementor-active');
-                            dropdown.setAttribute('aria-hidden', 'false');
-                            dropdown.style.display = 'block';
-                        } else {
-                            dropdown.classList.remove('elementor-active');
-                            dropdown.setAttribute('aria-hidden', 'true');
-                            dropdown.style.display = 'none';
-                        }
-                    }
+                if (window.openCwSideDrawer) {
+                    window.openCwSideDrawer();
                 }
             });
         });
 
-        // Close mobile menu when clicking outside or on a link
-        document.addEventListener('click', function (e) {
-            if (!e.target.closest('.elementor-widget-nav-menu')) {
-                menuToggles.forEach(toggle => {
-                    toggle.classList.remove('elementor-active');
-                    toggle.setAttribute('aria-expanded', 'false');
-                });
-                document.querySelectorAll('.elementor-nav-menu--dropdown').forEach(d => {
-                    d.classList.remove('elementor-active');
-                    d.setAttribute('aria-hidden', 'true');
-                    d.style.display = 'none';
-                });
-            }
-        });
-
-        // Close menu when clicking on any menu link
-        document.querySelectorAll('.elementor-nav-menu--dropdown a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggles.forEach(t => t.classList.remove('elementor-active'));
-                document.querySelectorAll('.elementor-nav-menu--dropdown').forEach(d => {
-                    d.classList.remove('elementor-active');
-                    d.style.display = 'none';
-                });
-            });
+        // Hide default inline elementor dropdown so it doesn't push page content down
+        document.querySelectorAll('.elementor-nav-menu--dropdown').forEach(d => {
+            d.style.display = 'none';
         });
 
         // ==========================================
@@ -258,7 +329,6 @@
         document.querySelectorAll('.gallery img, .elementor-gallery-item img, .elementor-widget-n-carousel img, .elementor-widget-image img').forEach(img => {
             img.style.cursor = 'pointer';
             img.addEventListener('click', function(e) {
-                // If not wrapped in a link that already handles it
                 if (!img.closest('a')) {
                     e.preventDefault();
                     window.openCwLightbox(img.src);
@@ -272,6 +342,5 @@
     } else {
         initInteractivity();
     }
-    // Also run after window load to ensure Swiper is fully loaded
     window.addEventListener('load', initInteractivity);
 })();
