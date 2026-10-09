@@ -187,30 +187,40 @@
                 }
             });
 
-            // 2B. Hero Slides
-            const heroSlides = document.querySelectorAll('.elementor-widget-slides .swiper');
-            heroSlides.forEach(slides => {
-                if (!slides.classList.contains('swiper-initialized')) {
-                    const parent = slides.closest('.elementor-widget-slides') || slides;
-                    new window.Swiper(slides, {
-                        slidesPerView: 1,
-                        loop: true,
-                        speed: 600,
-                        autoplay: {
-                            delay: 5000,
-                            disableOnInteraction: false,
-                        },
-                        pagination: {
-                            el: parent.querySelector('.swiper-pagination'),
-                            clickable: true,
-                        },
-                        navigation: {
-                            nextEl: parent.querySelector('.elementor-swiper-button-next, .swiper-button-next'),
-                            prevEl: parent.querySelector('.elementor-swiper-button-prev, .swiper-button-prev'),
-                        }
-                    });
-                }
+            // 2B. Hero Section - Ken Burns Smooth Zoom-In Effect (Single Image, No Sliding)
+            const heroBgs = document.querySelectorAll('.elementor-widget-slides .swiper-slide-bg');
+            heroBgs.forEach(bg => {
+                bg.classList.add('elementor-ken-burns--active');
             });
+
+            if (!document.getElementById('cw-kenburns-style')) {
+                const kbStyle = document.createElement('style');
+                kbStyle.id = 'cw-kenburns-style';
+                kbStyle.textContent = `
+                    .elementor-widget-slides .swiper-slide-bg.elementor-ken-burns {
+                        animation: cwKenBurnsZoom 14s ease-in-out infinite alternate !important;
+                        transform-origin: center center !important;
+                        will-change: transform;
+                    }
+                    @keyframes cwKenBurnsZoom {
+                        0% {
+                            transform: scale(1);
+                        }
+                        100% {
+                            transform: scale(1.18);
+                        }
+                    }
+                    .elementor-widget-slides .swiper-slide {
+                        width: 100% !important;
+                        opacity: 1 !important;
+                    }
+                    .elementor-widget-slides .elementor-swiper-button,
+                    .elementor-widget-slides .swiper-pagination {
+                        display: none !important;
+                    }
+                `;
+                document.head.appendChild(kbStyle);
+            }
 
             // 2C. Testimonials Carousel
             const testCarousels = document.querySelectorAll('.elementor-widget-testimonial-carousel .swiper');
@@ -239,8 +249,8 @@
                 }
             });
 
-            // 2D. Fallback for any other .swiper container
-            document.querySelectorAll('.swiper').forEach(s => {
+            // 2D. Fallback for any other .swiper container (excluding hero section)
+            document.querySelectorAll('.swiper:not(.elementor-slides-wrapper)').forEach(s => {
                 if (!s.classList.contains('swiper-initialized')) {
                     new window.Swiper(s, {
                         slidesPerView: 1,
