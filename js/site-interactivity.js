@@ -24,7 +24,7 @@
                     
                     <!-- Top Header: Logo & Close Button -->
                     <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid #f1f5f9;background:#fafafa;">
-                        <a href="index.html" style="display:flex;align-items:center;">
+                        <a href="/" style="display:flex;align-items:center;">
                             <img src="images/WhatsApp-Image-2026-09-04-at-9.06.36-PM-768x384.webp" alt="Cafeworld Publication" style="max-height:45px;width:auto;object-fit:contain;" />
                         </a>
                         <button id="cw-drawer-close" aria-label="Close Menu" style="background:#f1f5f9;border:none;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#334155;font-size:24px;line-height:1;transition:all 0.2s ease;">
@@ -36,27 +36,27 @@
                     <nav style="flex:1;padding:24px 18px;">
                         <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;">
                             <li>
-                                <a href="index.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                <a href="/" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
                                     <span style="margin-right:12px;font-size:18px;">🏠</span> Home
                                 </a>
                             </li>
                             <li>
-                                <a href="our-published-books.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                <a href="/our-published-books" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
                                     <span style="margin-right:12px;font-size:18px;">📚</span> Our Published books
                                 </a>
                             </li>
                             <li>
-                                <a href="gallery.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                <a href="/gallery" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
                                     <span style="margin-right:12px;font-size:18px;">🖼️</span> Gallery
                                 </a>
                             </li>
                             <li>
-                                <a href="about-us.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                <a href="/about-us" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
                                     <span style="margin-right:12px;font-size:18px;">ℹ️</span> About Us
                                 </a>
                             </li>
                             <li>
-                                <a href="contact.html" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
+                                <a href="/contact" class="cw-drawer-link" style="display:flex;align-items:center;padding:13px 16px;border-radius:8px;color:#1e293b;text-decoration:none;font-size:16px;font-weight:600;transition:all 0.2s ease;">
                                     <span style="margin-right:12px;font-size:18px;">📞</span> Contact Us
                                 </a>
                             </li>
